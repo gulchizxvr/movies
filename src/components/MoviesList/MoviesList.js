@@ -11,18 +11,20 @@ import css from "./MovieList.module.css"
 const MoviesList = () => {
 
     const dispatch = useDispatch();
-    const {movies,error} = useSelector(state => state.movieReducer)
+    const {movies,error,genres} = useSelector(state => state.movieReducer)
 
     useEffect(()=>
         {
             movieService.getMovie().then(({data})=>{
                 dispatch(movieActions.getMoviesData(data))})
-
-
+            movieService.getGenre().then(({data})=>{
+                dispatch(movieActions.getGenresAll(data))
+            })
         }
         ,[])
 
     const {results}=movies
+ 
 
     return (
         <div className={css.cardWrap}>
