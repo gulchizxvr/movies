@@ -1,0 +1,23 @@
+.card {
+    width: 300px;
+    background: #61dafb;
+    margin: 10px;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card > h3 {
+    text-align: center;
+    background: coral;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 250px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
