@@ -17,10 +17,12 @@ const MoviesList = () => {
         {
             movieService.getMovie().then(({data})=>{
                 dispatch(movieActions.getMoviesData(data))})
+
+
         }
         ,[])
 
-    const {results }=movies
+    const {results}=movies
 
     return (
         <div className={css.cardWrap}>

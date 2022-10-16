@@ -1,15 +1,36 @@
 import React from 'react';
 
 import css from './MovieListCard.module.css'
+import {baseURL} from "../../config";
+import {useNavigate} from "react-router-dom";
+
+
 
 const MoviesListCard = ({movie}) => {
 
-    const {title,overview} = movie
+
+
+    const {title,overview, poster_path} = movie
+
+
+
+    // ***
+    let navigate = useNavigate()
+    const somesth = () => {
+        navigate("/ppp")
+    }
+    // ****
+
+
+
     return (
-        <div className={css.card}>
+        <div className={css.card} onClick={somesth}>
             <h3>{title}</h3>
+            <img src={"https://image.tmdb.org/t/p/w300"+poster_path} />
             <p>{overview}</p>
-            <img src="https://college.unc.edu/wp-content/uploads/sites/1280/2020/05/film1.jpg" style={{width:"200px"}} alt=""/>
+
+
+
         </div>
     );
 };
