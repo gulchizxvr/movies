@@ -8,23 +8,6 @@ const initialState = {
     error: null
 }
 
-const getMoviesData = createAsyncThunk(
-    'movieSlice/getMovie',
-    async (_,{rejectedWithValue,dispatch, getState}) => {
-        const {data} = await movieService.getMovie()
-        dispatch(getMovies(data))
-        const state = getState()
-    }
-)
-
-const getGenresAll = createAsyncThunk(
-    'movieSlice/getGenres',
-    async (_, {rejectedWithValue,dispatch,getState}) => {
-        const {data} = await movieService.getGenre()
-        dispatch(getGenres(data))
-    }
-)
-
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -39,6 +22,22 @@ const movieSlice = createSlice({
 
     }
 });
+
+const getMoviesData = createAsyncThunk(
+    'movieSlice/getMovie',
+    async (_,{rejectedWithValue,dispatch, getState}) => {
+        const {data} = await movieService.getMovie()
+        dispatch(getMovies(data))
+    }
+)
+
+const getGenresAll = createAsyncThunk(
+    'movieSlice/getGenres',
+    async (_, {rejectedWithValue,dispatch,getState}) => {
+        const {data} = await movieService.getGenre()
+        dispatch(getGenres(data))
+    }
+)
 
   const {reducer:movieReducer, actions: {getMovies,getGenres}} = movieSlice
 

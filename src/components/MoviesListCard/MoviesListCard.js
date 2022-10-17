@@ -10,7 +10,7 @@ import {logDOM} from "@testing-library/react";
 const MoviesListCard = ({movie}) => {
 
 
-    const {title, overview, poster_path, genre_ids} = movie
+    const {title, overview, poster_path, genre_ids, id} = movie
 
 
     // ***
@@ -23,11 +23,18 @@ const MoviesListCard = ({movie}) => {
     // ***
 
     const {genres: t} = useSelector(state => state.movieReducer)
-    const array = t.genres
+    const array = t.genres ? t.genres : []
+    const genreOfMovie= []
 
-    const res = array ? (array.forEach(value=> console.log(value.id))): null
-    console.log(res);
 
+    for (const genre of genre_ids) {
+        for (const gen of array) {
+            if (genre === gen.id){
+                genreOfMovie.push(gen.name);
+            }
+        }
+    }
+    console.log(genreOfMovie);
 
     // ***
     return (
@@ -35,6 +42,7 @@ const MoviesListCard = ({movie}) => {
             <h3>{title}</h3>
             <img src={"https://image.tmdb.org/t/p/w300" + poster_path}/>
             <p>{overview}</p>
+            <h4>{JSON.stringify(genreOfMovie)}</h4>
 
 
             <div>
