@@ -1,16 +1,15 @@
 import React from 'react';
-
-import css from './MovieListCard.module.css'
-import {baseURL} from "../../config";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {logDOM} from "@testing-library/react";
+
+import css from './MovieListCard.module.css'
+
 
 
 const MoviesListCard = ({movie}) => {
 
 
-    const {title, overview, poster_path, genre_ids, id} = movie
+    const {title, overview, poster_path, genre_ids} = movie
 
 
     // ***
@@ -27,14 +26,24 @@ const MoviesListCard = ({movie}) => {
     const genreOfMovie= []
 
 
-    for (const genre of genre_ids) {
-        for (const gen of array) {
-            if (genre === gen.id){
-                genreOfMovie.push(gen.name);
-            }
-        }
-    }
-    console.log(genreOfMovie);
+    // for (const genre of genre_ids) {
+    //     for (const gen of array) {
+    //         if (genre === gen.id){
+    //             genreOfMovie.push(gen.name);
+    //         }
+    //     }
+    // }
+    // console.log(genreOfMovie);
+
+
+     array.map((item) => {
+        if (genre_ids.includes(item.id)) {
+           genreOfMovie.push(item.name)
+       }
+    })
+
+    genreOfMovie.length>0 ? console.log(genreOfMovie) : null
+
 
     // ***
     return (
