@@ -19,7 +19,7 @@ const Header = () => {
 
 
     return (
-        <div>
+
             <div>
                 <form onSubmit={handleSubmit(submit)}>
                     <input type="text" placeholder={"Введіть літеру чи цифру"} {...register("searchValue")}/>
@@ -28,13 +28,6 @@ const Header = () => {
 
             </div>
 
-
-            <div>
-
-
-
-            </div>
-        </div>
     );
 };
 
