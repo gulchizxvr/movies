@@ -26,7 +26,7 @@ const movieSlice = createSlice({
 const getMoviesData = createAsyncThunk(
     'movieSlice/getMovie',
     async (_,{rejectedWithValue,dispatch, getState}) => {
-        const {data} = await movieService.getMovie()
+        const {data} = await movieService.getMovies()
         dispatch(getMovies(data))
     }
 )

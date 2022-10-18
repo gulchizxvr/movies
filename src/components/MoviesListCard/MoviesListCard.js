@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import css from './MovieListCard.module.css'
-import {CBadge, CButton} from "@coreui/react";
+
 
 
 
@@ -16,8 +16,9 @@ const MoviesListCard = ({movie}) => {
     // ***
     let navigate = useNavigate()
     const somesth = () => {
-        navigate(`/${title}`)
+        navigate(`/${id}`)
     }
+
     // ****
 
     // ***

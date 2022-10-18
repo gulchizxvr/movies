@@ -15,7 +15,7 @@ const MoviesList = () => {
 
     useEffect(()=>
         {
-            movieService.getMovie().then(({data})=>{
+            movieService.getMovies().then(({data})=>{
                 dispatch(movieActions.getMoviesData(data))})
             movieService.getGenre().then(({data})=>{
                 dispatch(movieActions.getGenresAll(data))
