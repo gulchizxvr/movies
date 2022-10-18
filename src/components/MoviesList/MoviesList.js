@@ -27,9 +27,10 @@ const MoviesList = () => {
  
 
     return (
-        <div className={css.cardWrap}>
-            {results ? results.map(movie=> <MoviesListCard key={movie.id} movie={movie}/>) : null }
-        </div>
+            <div className={css.cardWrap}>
+                {results ? results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>) : null}
+            </div>
+
     );
 };
 

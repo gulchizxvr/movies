@@ -6,18 +6,16 @@ const MovieDetail = () => {
 
     let {id} = useParams();
 
-
-
-    console.log(id);
-
-    let [datas,setDatas] = useState(null);
+    let [datas,setDatas] = useState({});
 
     useEffect( ()=>{movieService.getMovie(id).then(({data}) => setDatas(data))},[] )
 
-let {title,adult} = datas;
+       let {title,adult} = datas;
+
+
     return (
         <div>
-            {title} --- {adult.toString()}
+            {title} --- {adult?.toString()}
         </div>
     );
 };

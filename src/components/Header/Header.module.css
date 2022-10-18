@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header > form > input {
+    width:400px;
+    font-size: 20px;
+}
+
+.header > form > button {
+    font-size: 20px;
+}
