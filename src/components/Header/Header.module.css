@@ -7,8 +7,22 @@
 .header > form > input {
     width:400px;
     font-size: 20px;
+    border-radius: 10px;
+    padding: 5px 15px;
+
+    border: none;
+    margin: 10px 10px 0 10px;
+
+}
+input[type=text]:focus{
+    background: #c7c6c6;
+    outline: none;
 }
 
 .header > form > button {
     font-size: 20px;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 50px;
+    cursor: pointer;
 }
