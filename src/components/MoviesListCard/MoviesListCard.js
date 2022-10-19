@@ -36,7 +36,7 @@ const MoviesListCard = ({movie}) => {
         <div className={css.card} onClick={toDetails}>
 
 
-            <div className={css.text}><h3>{title}</h3></div>
+            <div className={css.text}><h4>{title}</h4></div>
             <img src={"https://image.tmdb.org/t/p/w300" + poster_path}/>
             <div className={css.badge}>
                 {genreOfMovie.map(genre => <Badge genre={genre}/>)}
