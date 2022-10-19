@@ -6,7 +6,6 @@ import Navigation from "../../components/navigation/Navigation";
 const MoviesPage = () => {
     return (
         <div>
-            <Navigation/>
             <MoviesList/>
             <Navigation/>
         </div>

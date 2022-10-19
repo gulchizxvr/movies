@@ -23,6 +23,7 @@ const MoviesListCard = ({movie}) => {
         if (genre_ids.includes(item.id)) {
             genreOfMovie.push(item.name)
        }
+        return null
     })
 
     let navigate = useNavigate()

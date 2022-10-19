@@ -6,7 +6,8 @@ const initialState = {
     movies: [],
     genres: [],
     currentMovie: null,
-    error: null
+    error: null,
+    totalPage:null
 }
 
 const getMoviesData = createAsyncThunk(
@@ -14,6 +15,7 @@ const getMoviesData = createAsyncThunk(
     async ({x},{rejectedWithValue,dispatch, getState}) => {
         try {
             const {data} = await movieService.getMovies(x)
+
             return data
         } catch (e) {
             return rejectedWithValue(e.response.data)
@@ -27,6 +29,8 @@ const getGenres = createAsyncThunk(
 
         try {
         const {data} = await movieService.getGenre()
+            const state = getState()
+            console.log(state);
         return data
         } catch (e) {
             return rejectedWithValue(e.response.data)
@@ -42,6 +46,7 @@ const movieSlice = createSlice({
         builder
             .addCase(getMoviesData.fulfilled, (state, action) => {
                 state.movies = action.payload
+
             })
             .addCase(getGenres.fulfilled, (state, action) => {
                 state.genres = action.payload})

@@ -1,9 +1,20 @@
 import React from 'react';
 import {useSearchParams} from "react-router-dom";
 
+import css from "./Navigation.module.css"
+import {useSelector} from "react-redux";
+
 
 const Navigation = () => {
     const [query,setQuery] = useSearchParams({page:'1'})
+
+
+ // *****
+    let {movies} = useSelector(state => state.movieReducer);
+    const x = movies?.total_results
+//******
+
+
 
     const prevPage = () => {
         setQuery(value => ({page:value.get("page")-1}))
@@ -23,11 +34,11 @@ const Navigation = () => {
     }
 
     return (
-        <div>
-            <button onClick={prevPage}>prev</button>
-            <button onClick={nextPage}>next</button>
+        <div className={css.buttons}>
+            {+query.get("page")>1 ? <button onClick={prevPage}>Previous page</button> : null}
+            {+query.get("page")<x ? <button onClick={nextPage}>Next page</button> : null}
         </div>
     );
-};
+}
 
 export default Navigation;
