@@ -15,13 +15,12 @@ const Navigation = () => {
 //******
 
 
-
     const prevPage = () => {
-        setQuery(value => ({page:value.get("page")-1}))
+        setQuery(value => ({page: value.get("page") - 1}))
         window.scrollTo({
-            top:0,
-            left:0,
-            behavior:"smooth"
+            top: 0,
+            left: 0,
+            behavior: "smooth"
         })
     }
     const nextPage = () => {
@@ -35,8 +34,8 @@ const Navigation = () => {
 
     return (
         <div className={css.buttons}>
-            {+query.get("page")>1 ? <button onClick={prevPage}>Previous page</button> : null}
-            {+query.get("page")<x ? <button onClick={nextPage}>Next page</button> : null}
+            {+query.get("page")>1 && <button onClick={prevPage}>Previous page</button>}
+            {+query.get("page")<x && <button onClick={nextPage}>Next page</button>}
         </div>
     );
 }
