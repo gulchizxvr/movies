@@ -2,14 +2,16 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import css from './MovieListCard.module.css'
-import {CBadge} from "@coreui/react";
 import '@coreui/coreui/dist/css/coreui.min.css'
+import {Badge} from "../Badge/Badge";
+import {Rating} from "@mui/material";
 
 
 
 
 const MoviesListCard = ({movie}) => {
-    const {title, overview, poster_path, genre_ids,id} = movie
+    console.log(movie);
+    const {title, overview, poster_path, genre_ids,id, vote_average} = movie
 
     const {genres: data} = useSelector(state => state.movieReducer)
 
@@ -29,21 +31,16 @@ const MoviesListCard = ({movie}) => {
         navigate(`/${id}`)
     }
 
-
-
-
-    // ***
     return (
         <div className={css.card} onClick={toDetails}>
 
 
-
-
-            <CBadge color="danger" shape="rounded-pill">
-                <h7 >{JSON.stringify(genreOfMovie)}</h7>
-            </CBadge>
-            <h3>{title}</h3>
+            <div className={css.text}><h3>{title}</h3></div>
             <img src={"https://image.tmdb.org/t/p/w300" + poster_path}/>
+            <div className={css.badge}>
+                {genreOfMovie.map(genre => <Badge genre={genre}/>)}
+            </div>
+            <Rating value={vote_average/2} precision={0.5} readOnly/>
         </div>
     );
 }
