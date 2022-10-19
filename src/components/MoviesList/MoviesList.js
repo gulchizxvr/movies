@@ -1,30 +1,33 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-import {movieService} from "../../services";
 import {movieActions} from "../../redux/slices/movie.slice";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from "./MovieList.module.css"
+import { useSearchParams} from "react-router-dom";
+
 
 
 
 const MoviesList = () => {
 
     const dispatch = useDispatch();
-    const {movies,error,genres} = useSelector(state => state.movieReducer)
+    const {movies,error} = useSelector(state => state.movieReducer)
 
-    useEffect(()=>
-        {
-            movieService.getMovies().then(({data})=>{
-                dispatch(movieActions.getMoviesData(data))})
-            movieService.getGenre().then(({data})=>{
-                dispatch(movieActions.getGenresAll(data))
-            })
-        }
-        ,[])
 
-    const {results}=movies
- 
+    const [query,setQuery] = useSearchParams()
+    let x = query.get('page')
+
+    useEffect(()=>{
+        dispatch(movieActions.getMoviesData({x}))
+        dispatch(movieActions.getGenres())
+    },[x,dispatch])
+
+
+
+
+
+    const {results} = movies
 
     return (
             <div className={css.cardWrap}>

@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {movieService} from "../../services";
 
+
 const initialState = {
     movies: [],
     genres: [],
@@ -8,42 +9,49 @@ const initialState = {
     error: null
 }
 
+const getMoviesData = createAsyncThunk(
+    'movieSlice/getMovie',
+    async ({x},{rejectedWithValue,dispatch, getState}) => {
+        try {
+            const {data} = await movieService.getMovies(x)
+            return data
+        } catch (e) {
+            return rejectedWithValue(e.response.data)
+        }
+    }
+)
+
+const getGenres = createAsyncThunk(
+    'movieSlice/getGenres',
+    async (_, {rejectedWithValue,getState}) => {
+
+        try {
+        const {data} = await movieService.getGenre()
+        return data
+        } catch (e) {
+            return rejectedWithValue(e.response.data)
+        }
+    }
+)
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {
-
-        getMovies:(state,action)=>{
-            state.movies = action.payload
-        },
-        getGenres:(state, action)=>{
-            state.genres = action.payload
-        }
-
-    }
+    reducers: {},
+    extraReducers: builder =>
+        builder
+            .addCase(getMoviesData.fulfilled, (state, action) => {
+                state.movies = action.payload
+            })
+            .addCase(getGenres.fulfilled, (state, action) => {
+                state.genres = action.payload})
 });
 
-const getMoviesData = createAsyncThunk(
-    'movieSlice/getMovie',
-    async (_,{rejectedWithValue,dispatch, getState}) => {
-        const {data} = await movieService.getMovies()
-        dispatch(getMovies(data))
-    }
-)
-
-const getGenresAll = createAsyncThunk(
-    'movieSlice/getGenres',
-    async (_, {rejectedWithValue,dispatch,getState}) => {
-        const {data} = await movieService.getGenre()
-        dispatch(getGenres(data))
-    }
-)
-
-  const {reducer:movieReducer, actions: {getMovies,getGenres}} = movieSlice
+  const {reducer:movieReducer} = movieSlice
 
 const movieActions = {
     getMoviesData,
-    getGenresAll
+    getGenres
 }
 
 export {
