@@ -18,9 +18,6 @@ const MoviesList = () => {
     let x = query.get('page')
     let y = query.get('genre')
 
-    console.log(x);
-    console.log(y);
-    console.log(movies);
 
 
     useEffect(() => {

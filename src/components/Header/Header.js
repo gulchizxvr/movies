@@ -7,7 +7,7 @@ import {useSearchParams} from "react-router-dom";
 
 const Header = () => {
 
-    let [query,setQuery] = useSearchParams({genre:'1'});
+    let [query,setQuery] = useSearchParams();
 
     const {register, handleSubmit,reset} = useForm();
 
@@ -16,11 +16,11 @@ const Header = () => {
         reset()
     }
 
-    const setGenre = () => {
-        query.set('genre',12)
+    const setGenre = (id) => {
+        id>0 ? query.set('genre',id) : query.delete('genre')
+        query.set('page',1)
         setQuery(query)
     }
-
 
     return (
 
@@ -30,7 +30,10 @@ const Header = () => {
                     <button>Пошук</button>
                 </form>
                 <div>
-                    <button onClick={() => setGenre()}>action</button>
+                    <button onClick={() => setGenre(12)}>adventure</button>
+                    <button onClick={() => setGenre(28)}>action</button>
+                    <button onClick={() => setGenre(0)}>all</button>
+
                 </div>
             </div>
 
