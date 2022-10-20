@@ -7,12 +7,13 @@ const initialState = {
     genres: [],
     currentMovie: null,
     error: null,
-    totalPage:null
+    totalPage: null,
+    genre: null
 }
 
 const getMoviesData = createAsyncThunk(
-    'movieSlice/getMovie',
-    async ({x},{rejectedWithValue,dispatch, getState}) => {
+    'movieSlice/getMoviesData',
+    async ({x}, {rejectedWithValue, dispatch, getState}) => {
         try {
             const {data} = await movieService.getMovies(x)
             return data
@@ -22,17 +23,28 @@ const getMoviesData = createAsyncThunk(
     }
 )
 
+const getMoviesWithGenre = createAsyncThunk(
+    'movieSlice/getMoviesWithGenre',
+    async ({y,x}, {rejectedWithValue}) => {
+        try {
+            const {data} = await movieService.getMoviesGenre(y,x)
+            return data
+        } catch (e) {
+            return rejectedWithValue(e.response.data)
+        }
+    }
+)
 
 
 const getGenres = createAsyncThunk(
     'movieSlice/getGenres',
-    async (_, {rejectedWithValue,getState}) => {
+    async (_, {rejectedWithValue, getState}) => {
 
         try {
-        const {data} = await movieService.getGenre()
+            const {data} = await movieService.getGenre()
             const state = getState()
             console.log(state);
-        return data
+            return data
         } catch (e) {
             return rejectedWithValue(e.response.data)
         }
@@ -47,20 +59,25 @@ const movieSlice = createSlice({
         builder
             .addCase(getMoviesData.fulfilled, (state, action) => {
                 state.movies = action.payload
-
             })
             .addCase(getGenres.fulfilled, (state, action) => {
-                state.genres = action.payload})
+                state.genres = action.payload
+            })
+            .addCase(getMoviesWithGenre.fulfilled, (state, action) => {
+                state.movies = action.payload
+            })
+
 });
 
-  const {reducer:movieReducer} = movieSlice
+const {reducer: movieReducer} = movieSlice
 
 const movieActions = {
     getMoviesData,
-    getGenres
+    getGenres,
+    getMoviesWithGenre
 }
 
 export {
-      movieReducer,movieActions
+    movieReducer, movieActions
 }
 

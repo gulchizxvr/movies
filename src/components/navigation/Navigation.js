@@ -16,7 +16,8 @@ const Navigation = () => {
 
 
     const prevPage = () => {
-        setQuery(value => ({page: value.get("page") - 1}))
+
+        setQuery(value => (query.set('page',value.get("page") - 1)))
         window.scrollTo({
             top: 0,
             left: 0,
