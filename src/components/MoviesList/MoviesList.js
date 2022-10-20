@@ -18,10 +18,14 @@ const MoviesList = () => {
     const [query,setQuery] = useSearchParams()
     let x = query.get('page')
 
+
     useEffect(()=>{
-        dispatch(movieActions.getMoviesData({x}))
         dispatch(movieActions.getGenres())
-    },[x,dispatch])
+        if (y) {
+            dispatch()
+        }
+        dispatch(movieActions.getMoviesData({x}))
+    },[x])
 
 
 

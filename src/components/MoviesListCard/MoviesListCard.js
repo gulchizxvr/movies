@@ -19,11 +19,10 @@ const MoviesListCard = ({movie}) => {
     const array = data.genres ? data.genres : []
     const genreOfMovie= []
 
-    array.map((item) => {
+    array.forEach((item) => {
         if (genre_ids.includes(item.id)) {
             genreOfMovie.push(item.name)
        }
-        return null
     })
 
     let navigate = useNavigate()
@@ -36,12 +35,13 @@ const MoviesListCard = ({movie}) => {
         <div className={css.card} onClick={toDetails}>
 
 
-            <div className={css.text}><h4>{title}</h4></div>
             <img src={"https://image.tmdb.org/t/p/w300" + poster_path}/>
             <div className={css.badge}>
                 {genreOfMovie.map(genre => <Badge genre={genre}/>)}
             </div>
-            <Rating value={vote_average/2} precision={0.5} readOnly/>
+            <div className={css.text}><h4>{title}</h4></div>
+            <Rating value={vote_average} precision={0.05} max={10} readOnly/>
+            {vote_average}
         </div>
     );
 }

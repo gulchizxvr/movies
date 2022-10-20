@@ -2,7 +2,6 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 
 import css from "./Header.module.css"
-import Navigation from "../navigation/Navigation";
 
 
 const Header = () => {
@@ -23,7 +22,6 @@ const Header = () => {
                     <input type="text" placeholder={"Введіть літеру чи цифру"} {...register("searchValue")}/>
                     <button>Пошук</button>
                 </form>
-            <Navigation/>
 
             </div>
 
