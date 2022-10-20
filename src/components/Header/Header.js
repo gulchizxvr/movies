@@ -3,23 +3,16 @@ import {useForm} from "react-hook-form";
 
 import css from "./Header.module.css"
 import {useSearchParams} from "react-router-dom";
+import {Buttons} from "../buttons/Buttons";
 
 
 const Header = () => {
-
-    let [query,setQuery] = useSearchParams();
 
     const {register, handleSubmit,reset} = useForm();
 
     function submit(searchData) {
         console.log(searchData);
         reset()
-    }
-
-    const setGenre = (id) => {
-        id>0 ? query.set('genre',id) : query.delete('genre')
-        query.set('page',1)
-        setQuery(query)
     }
 
     return (
@@ -30,9 +23,8 @@ const Header = () => {
                     <button>Пошук</button>
                 </form>
                 <div>
-                    <button onClick={() => setGenre(12)}>adventure</button>
-                    <button onClick={() => setGenre(28)}>action</button>
-                    <button onClick={() => setGenre(0)}>all</button>
+                    <Buttons/>
+
 
                 </div>
             </div>
