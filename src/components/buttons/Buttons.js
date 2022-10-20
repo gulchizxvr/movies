@@ -15,17 +15,17 @@ const Buttons = () => {
 
 
 
-    const {genres: data} = useSelector(state => state.movieReducer)
+    // const {genres: data} = useSelector(state => state.movieReducer)
+    //
+    // const array = data.genres ? data.genres : []
+    // console.log(array);
+    // const [id,name] = Object.keys(array[0])
+    //
+    // console.log(id);
+    // console.log(name);
 
-    const array = data.genres ? data.genres : []
-    console.log(array);
-    const [id,name] = Object.keys(array[0])
 
-    console.log(id);
-    console.log(name);
-
-
-    array.map(value => console.log(Object.keys(value)))
+    // array.map(value => console.log(Object.keys(value)))
 
 
     return (
