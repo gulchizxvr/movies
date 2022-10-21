@@ -12,6 +12,7 @@ const Buttons = () => {
     const setGenre = (id) => {
         id > 0 ? query.set('genre', id) : query.delete('genre')
         query.set('page', 1)
+        query.delete('search')
         setQuery(query)
     }
 
