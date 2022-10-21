@@ -18,15 +18,13 @@ const Header = () => {
     return (
 
             <div className={css.header}>
-                <form onSubmit={handleSubmit(submit)}>
-                    <input type="text" placeholder={"Введіть літеру чи цифру"} {...register("searchValue")}/>
-                    <button>Пошук</button>
-                </form>
-                <div>
-                    <Buttons/>
-
-
+                <div className={css.form}>
+                    <form onSubmit={handleSubmit(submit)}>
+                        <input type="text" placeholder={"Введіть літеру чи цифру"} {...register("searchValue")}/>
+                        <button>Пошук</button>
+                    </form>
                 </div>
+                    <Buttons/>
             </div>
 
     );

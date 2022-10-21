@@ -1,6 +1,9 @@
 import React from 'react';
 import {useSearchParams} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {Button} from "../Button/Button";
+import css from "./Buttons.module.css"
+
 
 const Buttons = () => {
     let [query, setQuery] = useSearchParams();
@@ -12,24 +15,11 @@ const Buttons = () => {
         setQuery(query)
     }
 
-
-
-
-    // const {genres: data} = useSelector(state => state.movieReducer)
-    //
-    // const array = data.genres ? data.genres : []
-    // console.log(array);
-    // const [id,name] = Object.keys(array[0])
-    //
-    // console.log(id);
-    // console.log(name);
-
-
-    // array.map(value => console.log(Object.keys(value)))
-
+    const {genres} = useSelector(state => state.movieReducer)
 
     return (
-        <div>
+        <div className={css.buttons}>
+            {genres.map((genre) => <Button genre={genre} setGenre={setGenre}/>)}
             <button onClick={() => setGenre(0)}>all</button>
         </div>
     );

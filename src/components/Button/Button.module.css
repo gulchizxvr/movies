@@ -1,0 +1,6 @@
+.onebutton{
+    margin: 10px 10px;
+}
+.onebutton > button {
+    border-radius: 20px;
+}

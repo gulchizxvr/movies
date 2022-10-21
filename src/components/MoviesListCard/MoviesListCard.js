@@ -10,16 +10,14 @@ import {Rating} from "@mui/material";
 
 
 const MoviesListCard = ({movie}) => {
-    console.log(movie);
     const {title, overview, poster_path, genre_ids,id, vote_average} = movie
 
-    const {genres: data} = useSelector(state => state.movieReducer)
+    const {genres} = useSelector(state => state.movieReducer)
 
-
-    const array = data.genres ? data.genres : []
     const genreOfMovie= []
 
-    array.forEach((item) => {
+
+    genres.forEach((item) => {
         if (genre_ids.includes(item.id)) {
             genreOfMovie.push(item.name)
        }
