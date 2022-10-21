@@ -8,10 +8,15 @@ import {Buttons} from "../buttons/Buttons";
 
 const Header = () => {
 
+    const [query,setQuery] = useSearchParams();
+
     const {register, handleSubmit,reset} = useForm();
 
     function submit(searchData) {
-        console.log(searchData);
+        const {searchValue} = searchData;
+        console.log(searchValue);
+        query.set('search',searchValue)
+        setQuery(query)
         reset()
     }
 

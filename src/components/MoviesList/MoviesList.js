@@ -17,7 +17,7 @@ const MoviesList = () => {
 
     let x = query.get('page')
     let y = query.get('genre')
-
+    let z = query.get('search')
 
 
     useEffect(() => {
