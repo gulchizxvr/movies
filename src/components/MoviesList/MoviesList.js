@@ -18,17 +18,21 @@ const MoviesList = () => {
     let x = query.get('page')
     let y = query.get('genre')
     let z = query.get('search')
-
+    console.log(z);
 
     useEffect(() => {
         dispatch(movieActions.getGenres())
         if (y) {
             dispatch(movieActions.getMoviesWithGenre({y,x}))
         }
+        else if(z)
+        {
+            dispatch(movieActions.getMoviesSearch({z,x}))
+        }
         else{
             dispatch(movieActions.getMoviesData({x}))
         }
-    }, [y,x])
+    }, [y,x,z])
 
 
     const {results} = movies

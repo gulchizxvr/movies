@@ -25,9 +25,9 @@ const getMoviesData = createAsyncThunk(
 
 const getMoviesWithGenre = createAsyncThunk(
     'movieSlice/getMoviesWithGenre',
-    async ({y,x}, {rejectedWithValue}) => {
+    async ({z,x}, {rejectedWithValue}) => {
         try {
-            const {data} = await movieService.getMoviesGenre(y,x)
+            const {data} = await movieService.getMoviesGenre(z,x)
             return data
 
         } catch (e) {
@@ -50,6 +50,18 @@ const getGenres = createAsyncThunk(
     }
 )
 
+const getMoviesSearch = createAsyncThunk(
+    'movieSlice/getMoviesSearch',
+    async ({value,page}, {rejectedWithValue}) => {
+        try {
+            const {data} = await movieService.getSearchedMovies(value,page)
+            return data
+        } catch (e) {
+            return rejectedWithValue(e.response.data)
+        }
+    }
+)
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -65,6 +77,9 @@ const movieSlice = createSlice({
             .addCase(getMoviesWithGenre.fulfilled, (state, action) => {
                 state.movies = action.payload
             })
+            .addCase(getMoviesSearch.fulfilled,(state,action)=>{
+                state.movies = action.payload
+            })
 
 });
 
@@ -73,7 +88,8 @@ const {reducer: movieReducer} = movieSlice
 const movieActions = {
     getMoviesData,
     getGenres,
-    getMoviesWithGenre
+    getMoviesWithGenre,
+    getMoviesSearch
 }
 
 export {
