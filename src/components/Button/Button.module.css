@@ -3,4 +3,8 @@
 }
 .onebutton > button {
     border-radius: 20px;
+    border: none;
+    background: #b1f5f1;
+    padding: 10px 20px;
+
 }
