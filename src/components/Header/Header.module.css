@@ -24,3 +24,10 @@ input[type=text]:focus{
     border-radius: 50px;
     cursor: pointer;
 }
+
+.form {
+    background: #61dafb;
+}
+.form2 {
+    background: red;
+}

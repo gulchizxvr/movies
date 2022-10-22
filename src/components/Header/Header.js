@@ -14,7 +14,7 @@ const Header = () => {
     const {register, handleSubmit,reset} = useForm();
 
 
-    const [check,setCheck] = useState(null);
+    const [check,setCheck] = useState(1);
 
 
     function submit(searchData) {
@@ -34,7 +34,7 @@ const Header = () => {
     return (
 
             <div className={css.header}>
-                <div className={css.form}>
+                <div className={check ? css.form : css.form2}>
                     <form onSubmit={handleSubmit(submit)} onChange={handleSubmit(checki)}>
                         <input type="text" placeholder={"Введіть літеру чи цифру"} {...register("searchValue")}/>
                         <button>Пошук</button>
