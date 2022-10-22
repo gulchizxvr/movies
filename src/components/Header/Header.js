@@ -4,7 +4,8 @@ import {useForm} from "react-hook-form";
 import css from "./Header.module.css"
 import {useSearchParams} from "react-router-dom";
 import {Buttons} from "../buttons/Buttons";
-import {Input} from "@mui/material";
+
+import {useSelector} from "react-redux";
 
 
 const Header = () => {
@@ -14,7 +15,9 @@ const Header = () => {
     const {register, handleSubmit,reset} = useForm();
 
 
-    const [check,setCheck] = useState(1);
+    const [check,setCheck] = useState(0);
+
+
 
 
     function submit(searchData) {
@@ -27,18 +30,24 @@ const Header = () => {
 
     function checki(searches) {
         const {searchValue} = searches
+        query.delete('page')
         setCheck(searchValue)
     }
+const clear = () => {
+        reset()
+    query.delete('search')
+    setQuery(query)
 
-
+}
     return (
 
             <div className={css.header}>
-                <div className={check ? css.form : css.form2}>
+                <div>
                     <form onSubmit={handleSubmit(submit)} onChange={handleSubmit(checki)}>
                         <input type="text" placeholder={"Введіть літеру чи цифру"} {...register("searchValue")}/>
                         <button>Пошук</button>
                     </form>
+                    {check && <button onClick={()=> clear()}>x</button>}
                 </div>
                     <Buttons/>
             </div>

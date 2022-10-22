@@ -25,9 +25,3 @@ input[type=text]:focus{
     cursor: pointer;
 }
 
-.form {
-    background: #61dafb;
-}
-.form2 {
-    background: red;
-}
