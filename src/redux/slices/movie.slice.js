@@ -8,7 +8,8 @@ const initialState = {
     currentMovie: null,
     error: null,
     totalPage: null,
-    genre: null
+    genre: null,
+    request: true
 }
 
 const getMoviesData = createAsyncThunk(
@@ -79,6 +80,7 @@ const movieSlice = createSlice({
             })
             .addCase(getMoviesSearch.fulfilled,(state,action)=>{
                 state.movies = action.payload
+                state.request = false
             })
 
 });

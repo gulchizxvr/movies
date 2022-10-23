@@ -5,12 +5,13 @@ import {movieActions} from "../../redux/slices/movie.slice";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from "./MovieList.module.css"
 import {useSearchParams} from "react-router-dom";
+import {ErrorMovies} from "../errorMovies/errorMovies";
 
 
 const MoviesList = () => {
 
     const dispatch = useDispatch();
-    const {movies, error} = useSelector(state => state.movieReducer)
+    const {movies, error,request} = useSelector(state => state.movieReducer)
 
 
     const [query, setQuery] = useSearchParams()
@@ -37,10 +38,10 @@ const MoviesList = () => {
 
 
     const {results} = movies
-
+    console.log(results);
     return (
         <div className={css.cardWrap}>
-            {results ? results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>) : null}
+            {results ? (results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)): null}
         </div>
 
     );

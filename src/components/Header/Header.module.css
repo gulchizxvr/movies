@@ -23,5 +23,13 @@ input[type=text]:focus{
     padding: 5px 10px;
     border-radius: 50px;
     cursor: pointer;
+    position: relative;
 }
 
+.clear{
+    background: none;
+    border: none;
+    text-decoration: none;
+    position: absolute;
+    left: 12%;
+}

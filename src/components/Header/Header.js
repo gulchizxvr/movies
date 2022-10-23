@@ -1,56 +1,64 @@
+import {useSearchParams} from "react-router-dom";
 import React, {useState} from 'react';
-import {useForm} from "react-hook-form";
 
 import css from "./Header.module.css"
-import {useSearchParams} from "react-router-dom";
 import {Buttons} from "../buttons/Buttons";
+import ClearIcon from '@mui/icons-material/Clear';
 
-import {useSelector} from "react-redux";
+
+
 
 
 const Header = () => {
 
-    const [query,setQuery] = useSearchParams();
+    const [query, setQuery] = useSearchParams();
 
-    const {register, handleSubmit,reset} = useForm();
+    const [searching, setSearching] = useState("");
 
-
-    const [check,setCheck] = useState(0);
-
+    const [haveSearch, setHaveSearch] = useState(false)
 
 
-
-    function submit(searchData) {
-        const {searchValue} = searchData;
-        console.log(searchValue);
-        query.set('search',searchValue)
-        query.delete('genre')
-        setQuery(query)
+    const submit = () => {
+        if (searching){
+            query.set('search', searching)
+            query.delete('genre')
+            setQuery(query)
+            setHaveSearch(true)
+        }
     }
 
-    function checki(searches) {
-        const {searchValue} = searches
+    const changeValue = (value) => {
+        const {target} = value
         query.delete('page')
-        setCheck(searchValue)
+        setSearching(target.value)
     }
-const clear = () => {
-        reset()
-    query.delete('search')
-    setQuery(query)
 
-}
+    const clear = () => {
+        document.getElementById('searchValue').value = ""
+        setSearching(null)
+    }
+
+    const deleteSearch = () => {
+        document.getElementById('searchValue').value = ""
+        setHaveSearch(false)
+        query.delete('search')
+        setQuery(query)
+        setSearching(null)
+    }
+
     return (
 
-            <div className={css.header}>
-                <div>
-                    <form onSubmit={handleSubmit(submit)} onChange={handleSubmit(checki)}>
-                        <input type="text" placeholder={"Введіть літеру чи цифру"} {...register("searchValue")}/>
-                        <button>Пошук</button>
-                    </form>
-                    {check && <button onClick={()=> clear()}>x</button>}
-                </div>
-                    <Buttons/>
+        <div className={css.header}>
+            <div>
+                <input type="text" placeholder={"Введіть слово для пошуку"} onChange={changeValue} id={'searchValue'}/>
+
+                {searching && <button className={css.clear} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
+
+                <button onClick={submit}>search</button>
             </div>
+
+            {haveSearch ? <button onClick={()=>deleteSearch()}>{searching}</button> : <Buttons/>}
+        </div>
 
     );
 };
