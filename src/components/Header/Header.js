@@ -4,10 +4,7 @@ import React, {useState} from 'react';
 import css from "./Header.module.css"
 import {Buttons} from "../buttons/Buttons";
 import ClearIcon from '@mui/icons-material/Clear';
-
-
-
-
+import {Switch} from "@mui/material";
 
 const Header = () => {
 
@@ -15,7 +12,6 @@ const Header = () => {
 
     const [searching, setSearching] = useState("");
 
-    const [haveSearch, setHaveSearch] = useState(false)
 
 
     const submit = () => {
@@ -23,7 +19,6 @@ const Header = () => {
             query.set('search', searching)
             query.delete('genre')
             setQuery(query)
-            setHaveSearch(true)
         }
     }
 
@@ -40,10 +35,10 @@ const Header = () => {
 
     const deleteSearch = () => {
         document.getElementById('searchValue').value = ""
-        setHaveSearch(false)
         query.delete('search')
         setQuery(query)
         setSearching(null)
+
     }
 
     return (
@@ -52,12 +47,15 @@ const Header = () => {
             <div>
                 <input type="text" placeholder={"Введіть слово для пошуку"} onChange={changeValue} id={'searchValue'}/>
 
-                {searching && <button className={css.clear} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
+                {searching && <button  className={css.clear} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
 
-                <button onClick={submit}>search</button>
+                <button onClick={submit} disabled={!searching}>search</button>
             </div>
 
-            {haveSearch ? <button onClick={()=>deleteSearch()}>{searching}</button> : <Buttons/>}
+            {query.get("search") ? <button onClick={()=>deleteSearch()}>{query.get("search")}</button> : <Buttons/>}
+
+
+
         </div>
 
     );

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import css from './MovieListCard.module.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import {Badge} from "../Badge/Badge";
-import {Rating} from "@mui/material";
+import {Rating, Switch} from "@mui/material";
 
 
 
@@ -40,6 +40,7 @@ const MoviesListCard = ({movie}) => {
             <div className={css.text}><h4>{title}</h4></div>
             <Rating value={vote_average} precision={0.05} max={10} readOnly/>
             {vote_average}
+
         </div>
     );
 }

@@ -1,27 +1,31 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import {themeActions} from "../../redux/slices/theme.slice";
+
+import css from "./Switcher.module.css"
+import {Switch} from "antd";
 
 const Switcher = () => {
 
     const dispatch = useDispatch();
 
-    const [themis, setThemis] = useState("light");
-    console.log(themis)
+    // const [themis, setThemis] = useState("light");
+
+    const {theme} = useSelector(state => state.themeReducer)
+
+    console.log(theme)
+    const change = () => {
+    if (theme === "light") {
+        dispatch(themeActions.changeTheme("dark"))
+    } else {
+        dispatch(themeActions.changeTheme("light"))
+    }
+    }
+
     return (
-        <div>
-            <button onClick={() => {
-                if (themis !== "light") {
-                    dispatch(themeActions.changeTheme("dark"))
-                    setThemis("light")
-                } else if (themis === "light"){
-                    dispatch(themeActions.changeTheme("light"))
-                    setThemis("dark")
-                }
-            }}>
-                change
-            </button>
+        <div className={css.switcher}>
+            <Switch/>
         </div>
     );
 };

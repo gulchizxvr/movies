@@ -80,7 +80,6 @@ const movieSlice = createSlice({
             })
             .addCase(getMoviesSearch.fulfilled,(state,action)=>{
                 state.movies = action.payload
-                state.request = false
             })
 
 });

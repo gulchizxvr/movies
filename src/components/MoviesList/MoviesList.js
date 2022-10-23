@@ -5,7 +5,7 @@ import {movieActions} from "../../redux/slices/movie.slice";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from "./MovieList.module.css"
 import {useSearchParams} from "react-router-dom";
-import {ErrorMovies} from "../errorMovies/errorMovies";
+
 
 
 const MoviesList = () => {
@@ -26,8 +26,7 @@ const MoviesList = () => {
         if (genre) {
             dispatch(movieActions.getMoviesWithGenre({genre,page}))
         }
-        else
-            if(value)
+        else if(value)
         {
             dispatch(movieActions.getMoviesSearch({value,page}))
         }
