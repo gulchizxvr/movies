@@ -1,10 +1,13 @@
 import {useSearchParams} from "react-router-dom";
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import css from "./Header.module.css"
-import {Buttons} from "../buttons/Buttons";
+import {Buttons} from "../Buttons/Buttons";
 import ClearIcon from '@mui/icons-material/Clear';
-import {Switch} from "@mui/material";
+import {Switcher} from "../Switcher/Switcher";
+import {useDispatch, useSelector} from "react-redux";
+import {genreActions} from "../../redux";
+
 
 const Header = () => {
 
@@ -12,10 +15,18 @@ const Header = () => {
 
     const [searching, setSearching] = useState("");
 
+    const dispatch = useDispatch();
+
+    const {currentMovie} = useSelector(state => state.movieReducer);
+
+
+    useEffect(() => {
+        dispatch(genreActions.getGenres())
+    }, [dispatch])
 
 
     const submit = () => {
-        if (searching){
+        if (searching) {
             query.set('search', searching)
             query.delete('genre')
             setQuery(query)
@@ -41,21 +52,27 @@ const Header = () => {
 
     }
 
+
     return (
 
         <div className={css.header}>
-            <div>
-                <input type="text" placeholder={"Введіть слово для пошуку"} onChange={changeValue} id={'searchValue'}/>
-
-                {searching && <button  className={css.clear} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
-
+            <div className={css.inputLine}>
+                <input type="text" placeholder={"Введіть слово для пошуку"} onChange={changeValue}
+                       id={'searchValue'}/>
+                {searching &&
+                    <button className={css.clear} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
                 <button onClick={submit} disabled={!searching}>search</button>
+
+                <Switcher/>
+
+
             </div>
 
-            {query.get("search") ? <button onClick={()=>deleteSearch()}>{query.get("search")}</button> : <Buttons/>}
-
-
-
+            <div className={css.buttonsGenre}>
+                {currentMovie &&
+                    (query.get("search") ? <button onClick={() => deleteSearch()}>{query.get("search")}</button> :
+                        <Buttons/>)}
+            </div>
         </div>
 
     );

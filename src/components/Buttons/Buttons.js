@@ -1,8 +1,11 @@
 import React from 'react';
 import {useSearchParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {Button} from "../Button/Button";
+
+
 import css from "./Buttons.module.css"
+import {Button} from "../Button/Button";
+
 
 
 const Buttons = () => {
@@ -16,7 +19,7 @@ const Buttons = () => {
         setQuery(query)
     }
 
-    const {genres} = useSelector(state => state.movieReducer)
+    const {genres} = useSelector(state => state.genreReducer)
 
     return (
         <div className={css.buttons}>

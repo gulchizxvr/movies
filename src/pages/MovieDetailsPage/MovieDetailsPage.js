@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {MovieDetail} from "../../components";
 
 const MovieDetailsPage = () => {
@@ -9,4 +10,4 @@ const MovieDetailsPage = () => {
     );
 };
 
-export default MovieDetailsPage;
+export {MovieDetailsPage}

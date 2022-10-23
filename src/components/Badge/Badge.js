@@ -1,6 +1,6 @@
 import React from 'react';
-import {CBadge} from "@coreui/react";
 
+import {CBadge} from "@coreui/react";
 import css from "./Baduge.module.css"
 
 const Badge = ({genre}) => {

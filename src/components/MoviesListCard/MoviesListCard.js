@@ -1,10 +1,11 @@
 import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import css from './MovieListCard.module.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import {Badge} from "../Badge/Badge";
-import {Rating, Switch} from "@mui/material";
+import {Rating} from "@mui/material";
+import {movieActions} from "../../redux";
 
 
 
@@ -12,10 +13,11 @@ import {Rating, Switch} from "@mui/material";
 const MoviesListCard = ({movie}) => {
     const {title, overview, poster_path, genre_ids,id, vote_average} = movie
 
-    const {genres} = useSelector(state => state.movieReducer)
+    const {genres} = useSelector(state => state.genreReducer)
 
     const genreOfMovie= []
 
+    const dispatch = useDispatch();
 
     genres.forEach((item) => {
         if (genre_ids.includes(item.id)) {
@@ -27,13 +29,17 @@ const MoviesListCard = ({movie}) => {
 
     const toDetails = () => {
         navigate(`/${id}`)
+       dispatch(movieActions.selectMovie())
     }
 
     return (
         <div className={css.card} onClick={toDetails}>
 
 
-            <img src={"https://image.tmdb.org/t/p/w300" + poster_path} alt={"error with image"}/>
+            <div className={css.poster}>
+                <img src={"https://image.tmdb.org/t/p/w300" + poster_path} alt={"error with image"}/>
+            </div>
+
             <div className={css.badge}>
                 {genreOfMovie.map(genre => <Badge genre={genre}/>)}
             </div>

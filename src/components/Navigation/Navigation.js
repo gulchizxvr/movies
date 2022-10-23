@@ -3,17 +3,16 @@ import {useSearchParams} from "react-router-dom";
 
 import css from "./Navigation.module.css"
 import {useSelector} from "react-redux";
-import {Switch} from "@mui/material";
 
 
 const Navigation = () => {
     const [query,setQuery] = useSearchParams({page:'1'})
 
 
- // *****
+
     let {movies} = useSelector(state => state.movieReducer);
-    const x = movies?.total_results
-//******
+    const totalPages = movies?.total_pages
+
 
 
     const prevPage = () => {
@@ -40,9 +39,9 @@ const Navigation = () => {
     return (
         <div className={css.buttons}>
             {+query.get("page")>1 && <button onClick={prevPage}>Previous page</button>}
-            {+query.get("page")<x && <button onClick={nextPage}>Next page</button>}
+            {+query.get("page")<totalPages && <button onClick={nextPage}>Next page</button>}
         </div>
     );
 }
 
-export default Navigation;
+export {Navigation}

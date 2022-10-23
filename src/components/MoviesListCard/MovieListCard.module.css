@@ -1,8 +1,10 @@
 .card {
     width: 300px;
+height: 588px;
     background: #d8e7ec;
     margin: 10px;
     display: flex;
+
 
     flex-direction: column;
     align-items: center;
@@ -33,7 +35,7 @@
 
 }
 
-.badge{
+.badge {
     display: flex;
     justify-content: flex-start;
     width: 100%;
@@ -43,4 +45,8 @@
     top: -1%;
     left: 8px;
 
+}
+
+.poster {
+    overflow: hidden;
 }

@@ -1,10 +1,22 @@
 import React from 'react';
 import css from "./Button.module.css"
+import {useDispatch, useSelector} from "react-redux";
+import {movieActions} from "../../redux";
+
 
 const Button = ({genre,setGenre}) => {
+
+
+
+    const select = (id) => {
+        setGenre(id)
+
+    }
+
+
     return (
         <div className={css.onebutton}>
-           <button onClick={()=> setGenre(genre.id)}>{genre.name}</button>
+           <button onClick={()=> select(genre.id)}>{genre.name}</button>
         </div>
     );
 };

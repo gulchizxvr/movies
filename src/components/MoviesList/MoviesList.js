@@ -1,17 +1,18 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-import {movieActions} from "../../redux/slices/movie.slice";
-import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
+
 import css from "./MovieList.module.css"
 import {useSearchParams} from "react-router-dom";
 
+import {movieActions} from "../../redux";
+import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 
 
 const MoviesList = () => {
 
     const dispatch = useDispatch();
-    const {movies, error,request} = useSelector(state => state.movieReducer)
+    const {movies, error, loading} = useSelector(state => state.movieReducer)
 
 
     const [query, setQuery] = useSearchParams()
@@ -22,25 +23,36 @@ const MoviesList = () => {
 
 
     useEffect(() => {
-        dispatch(movieActions.getGenres())
+        dispatch(movieActions.selectMovie(true))
         if (genre) {
-            dispatch(movieActions.getMoviesWithGenre({genre,page}))
-        }
-        else if(value)
-        {
-            dispatch(movieActions.getMoviesSearch({value,page}))
-        }
-        else{
+            dispatch(movieActions.getMoviesWithGenre({genre, page}))
+        } else if (value) {
+            dispatch(movieActions.getMoviesSearch({value, page}))
+        } else {
             dispatch(movieActions.getMoviesData({page}))
         }
-    }, [page,value,genre])
+
+    }, [page, value, genre])
 
 
     const {results} = movies
-    console.log(results);
+    if (!loading && results?.length<=0) {
+        return <div>
+            <h1>its all</h1>
+        </div>
+    }
+
+
     return (
-        <div className={css.cardWrap}>
-            {results ? (results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)): null}
+        <div style={{display:"flex",alignItems:"center",flexDirection:"column"}}>
+
+            {loading ? <h2>Завантаження</h2> : null}
+            {error ? <h2>Сталася помилка</h2> : null}
+
+            <div className={css.cardWrap}>
+                {results ? (results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)) : null}
+
+            </div>
         </div>
 
     );

@@ -12,7 +12,6 @@ import {useSelector} from "react-redux";
 
 const MainLayout = () => {
     const {theme}=useSelector(state => state.themeReducer)
-
     return (
         <div className={ theme === "light" ? css.all : css.allDark}>
            <Header/>

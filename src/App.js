@@ -4,9 +4,7 @@ import './App.css';
 import {Route, Routes} from "react-router-dom";
 
 import {MainLayout} from "./layout";
-import {MoviesPage} from "./pages";
-
-import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
+import {MovieDetailsPage, MoviesPage} from "./pages";
 
 function App() {
   return (
@@ -14,7 +12,6 @@ function App() {
         <Route path={'/'} element={<MainLayout/>}>
             <Route index element={<MoviesPage/>}/>
             <Route path={'/:id'} element={<MovieDetailsPage/>}/>
-            <Route path={'/:genre'} element={<MovieDetailsPage/>}/>
 
         </Route>
     </Routes>

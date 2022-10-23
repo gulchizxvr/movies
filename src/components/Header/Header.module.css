@@ -13,7 +13,7 @@
 
 }
 input[type=text]:focus{
-    background: #c7c6c6;
+    background: #b6b6b6;
     outline: none;
 }
 
@@ -31,5 +31,16 @@ input[type=text]:focus{
     border: none;
     text-decoration: none;
     position: absolute;
-    left: 12%;
+    left: 160px;
+}
+
+.inputLine{
+
+}
+
+.switch{
+    position: absolute;
+    left: 70%;
+     bottom: 94%;
+    color: white;
 }
