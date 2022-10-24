@@ -1,7 +1,5 @@
 import React from 'react';
 import css from "./Button.module.css"
-import {useDispatch, useSelector} from "react-redux";
-import {movieActions} from "../../redux";
 
 
 const Button = ({genre,setGenre}) => {
