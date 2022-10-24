@@ -2,19 +2,26 @@
     display: flex;
     flex-wrap: wrap;
 }
-.buttonAll{
+.buttonsAll{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.buttonsAllDark > button {
+.buttonsAll > button {
     border: none;
     border-radius: 20px;
-    background: #282c34;
+    background: none;
     padding: 8px;
     font-size: 30px;
-    color:white;
 }
-.orange > button {
-    color:white;
+.chooseGenre{
+    margin: 10px 40px 0;
+}
+
+
+.light{
+    color:black
+}
+.dark{
+    color:white
 }

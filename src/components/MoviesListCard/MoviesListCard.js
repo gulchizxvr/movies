@@ -11,7 +11,10 @@ import {movieActions} from "../../redux";
 
 
 const MoviesListCard = ({movie}) => {
-    const {title, overview, poster_path, genre_ids,id, vote_average} = movie
+
+    const {theme}=useSelector(state => state.themeReducer)
+
+    const {title, poster_path, genre_ids,id, vote_average} = movie
 
     const {genres} = useSelector(state => state.genreReducer)
 
@@ -33,7 +36,7 @@ const MoviesListCard = ({movie}) => {
     }
 
     return (
-        <div className={css.card} onClick={toDetails}>
+        <div className={`${css.card} ${theme==='light' ? css.light : css.dark}`} onClick={toDetails}>
 
 
             <div className={css.poster}>

@@ -4,7 +4,6 @@
     right: 70px;
     top: 10px;
 
-
     display: flex;
     align-items: center;
 }
@@ -17,6 +16,12 @@
 }
 
 .profile > h4 {
-    color: white;
     padding: 0 10px;
+}
+
+.light{
+    color:black;
+}
+.dark{
+    color:white;
 }

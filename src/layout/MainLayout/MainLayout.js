@@ -13,7 +13,7 @@ const MainLayout = () => {
     const {theme}=useSelector(state => state.themeReducer)
 
     return (
-        <div className={ theme === "light" ? css.all : css.allDark}>
+        <div className={ `${css.all} ${theme === "light" ? css.light : css.dark}`}>
            <Header/>
             <Outlet/>
         </div>

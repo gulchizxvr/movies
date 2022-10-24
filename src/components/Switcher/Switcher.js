@@ -19,7 +19,7 @@ const Switcher = () => {
 
     useEffect(() => {
         dispatch(themeActions.changeTheme(theme))
-    }, [theme])
+    }, [theme,dispatch])
 
     const change = () => {
         theme === "light" ? window.localStorage.setItem('theme', 'dark') : window.localStorage.setItem('theme', 'light')
@@ -28,7 +28,7 @@ const Switcher = () => {
     }
 
     return (
-        <div className={theme === "light" ? css.switcher : css.switcherDark}>
+        <div className={`${css.switcher} ${theme==='light' ? css.light : css.dark}`}>
             <LightModeIcon/>
             <Switch onClick={() => change()} checked={theme === "dark"}/>
             <DarkModeIcon/>

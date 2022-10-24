@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useSearchParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 
 import css from "./Buttons.module.css"
@@ -25,14 +25,14 @@ const Buttons = () => {
 
 
 
-        return (<div className={`${css.buttons} ${theme==="light" ? css.buttonsAllDark : null}`}>
-            <button onClick={() => setGenre(0)}>Go to all genres</button>
+        return (<div className={css.buttonsAll}>
+            <button className={`${theme === "light" ?  css.light : css.dark}`} onClick={() => setGenre(0)}>Go to all genres</button>
         </div>)
 
     }
 
-    return (<div>
-            <h2 style={{color: "white"}}>You can choose</h2>
+    return (<div className={`${css.chooseGenre} ${theme==='light' ? css.light : css.dark}`}>
+            <h2>You can choose:</h2>
             <div className={css.buttons}>
                 {genres.map((genre) => <Button genre={genre} setGenre={setGenre} key={genre.id}/>)}
             </div>

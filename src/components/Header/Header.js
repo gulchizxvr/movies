@@ -86,7 +86,7 @@ const Header = () => {
                 {currentMovie &&
                     (query.get("search") ?
 
-                        <div className={css.removeSearch} onClick={() => deleteSearch()}>
+                        <div className={`${css.removeSearch} ${theme==='light' ? css.light : css.dark}`} onClick={() => deleteSearch()}>
                             <h3>Delete "{query.get("search")}"</h3>
                         </div>
 

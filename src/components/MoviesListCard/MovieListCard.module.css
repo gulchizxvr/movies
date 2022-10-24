@@ -1,7 +1,8 @@
 .card {
     width: 300px;
-height: 588px;
-    background: #d8e7ec;
+    height: 588px;
+
+
     margin: 10px;
     display: flex;
 
@@ -25,12 +26,11 @@ height: 588px;
     box-sizing: border-box;
     width: 300px;
     height: 70px;
-    display:flex;
+    display: flex;
     align-items: flex-start;
     justify-content: center;
     margin-bottom: 10px;
-    overflow:hidden;
-
+    overflow: hidden;
 
 
 }
@@ -51,11 +51,21 @@ height: 588px;
 .poster {
     overflow: hidden;
 }
-.errorPoster{
+
+.errorPoster {
     background: #fd8383;
     height: 500px;
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.light{
+    background: #3d3d3d;
+    color: white;
+}
+.dark{
+    background: #bfeeea;
+    color: black;
 }

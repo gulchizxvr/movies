@@ -6,7 +6,7 @@ import css from "./Navigation.module.css"
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { lightBlue } from '@mui/material/colors';
+import {blue} from '@mui/material/colors';
 
 
 const Navigation = () => {
@@ -15,6 +15,7 @@ const Navigation = () => {
     let {movies} = useSelector(state => state.movieReducer);
     const totalPages = movies?.total_pages
 
+    const {theme}=useSelector(state => state.themeReducer)
 
 
     const goPrevious = () => {
@@ -42,13 +43,13 @@ const Navigation = () => {
         <div className={css.navigation}>
             
             {+query.get("page")>1 &&
-                <div className={css.prevButton}><ArrowBackIosNewIcon fontSize={"large"} sx={{color: lightBlue[500]}} onClick={goPrevious}>Previous
+                <div className={css.prevButton}><ArrowBackIosNewIcon fontSize={"large"} sx={{color: blue[500]}} onClick={goPrevious}>Previous
                     page</ArrowBackIosNewIcon></div>}
 
-            {totalPages>0 && <h3> Page: {query.get('page')} of {totalPages}</h3>}
+            {totalPages>0 && <h3 className={`${theme === 'light' ? css.light : css.dark}`}> Page: {query.get('page')} of {totalPages}</h3>}
 
             {+query.get("page")<totalPages &&
-                <div className={css.nextButton}><ArrowForwardIosIcon fontSize={"large"} sx={{color: lightBlue[500]}} onClick={goNext}>Next
+                <div className={css.nextButton}><ArrowForwardIosIcon fontSize={"large"} sx={{color: blue[500]}} onClick={goNext}>Next
                     page</ArrowForwardIosIcon></div>}
         </div>
     );

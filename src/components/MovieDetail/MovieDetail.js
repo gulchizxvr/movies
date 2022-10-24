@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 
-import {movieService} from "../../services";
+
 import {useDispatch, useSelector} from "react-redux";
 import {movieActions} from "../../redux";
 import {CBadge} from "@coreui/react";
@@ -13,6 +13,7 @@ const MovieDetail = () => {
 
     const {id} = useParams();
     const dispatch = useDispatch();
+    const {theme}=useSelector(state => state.themeReducer)
 
     useEffect(() => {
         dispatch(movieActions.getCurrentMovie({id}))
@@ -21,7 +22,6 @@ const MovieDetail = () => {
     const {movie} = useSelector(state => state.movieReducer);
 
     const {
-        budget,
         poster_path,
         original_title,
         overview,
@@ -36,7 +36,7 @@ const MovieDetail = () => {
     } = movie
 
     return (
-        <div className={css.wrap}>
+        <div className={`${css.wrap} ${theme==="light" ? css.light : css.dark}`}>
             <div className={css.poster}>
                 <img src={"https://image.tmdb.org/t/p/w400" + poster_path}/>
                 <div className={css.rating}>
@@ -51,8 +51,17 @@ const MovieDetail = () => {
                 <h1>{title}</h1>
 
                 <div className={css.overview}>
-                    {genres?.map(genre => <CBadge color="danger"
-                                                  shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge>)}
+
+                    <div className={css.badges}>
+                        {genres?.map(genre =>
+                        theme === 'light' ?
+                            <div><CBadge color="warning" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge>
+                            </div>
+                            :
+                            < div>< CBadge color="danger" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge></div>
+                    )}
+                    </div>
+
                     <h5 style={{marginTop: '8px'}}>Original title: {original_title}</h5>
 
                     <h2>Overview:</h2>

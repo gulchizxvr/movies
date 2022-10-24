@@ -18,7 +18,10 @@
 }
 
 
-h3{
+.dark{
     color:white;
+}
+.light{
+    color:black
 }
 

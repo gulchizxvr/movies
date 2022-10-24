@@ -1,6 +1,9 @@
 .all{
-    background: #e0dede;
+    min-height: 100vh;
 }
-.allDark {
+.dark {
     background: #282c34;
+}
+.light{
+    background: #e0dede;
 }

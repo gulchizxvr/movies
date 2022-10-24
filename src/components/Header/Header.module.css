@@ -1,5 +1,4 @@
 .header {
-
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -21,7 +20,6 @@
 }
 
 .inputLine > input[type=text] {
-
     width: 400px;
     font-size: 15px;
     border-radius: 10px;
@@ -33,7 +31,6 @@
 
 .inputLine > input[type=text]:focus {
     background: #b6b6b6;
-
     outline: none;
     border: none;
 }
@@ -69,4 +66,10 @@
     cursor: pointer;
 }
 
+.light{
+    color:black
+}
+.dark{
+    color:white
+}
 

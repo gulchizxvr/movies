@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
    justify-content: center;
-    min-height: 85vh;
+    min-height: 100vh;
 }
 .listWrap{
     display: flex;
@@ -12,17 +12,19 @@
 
 .errorPoster{
     display: flex;
-    height: 78.5vh;
+    height: 500px;
     justify-content: center;
     align-items: center;
 
 }
 
-.loading{
+.state{
     padding: 20px;
-    color:white
 }
-.error{
-    padding: 20px;
-    color: white
+
+.light{
+    color: black;
+}
+.dark{
+    color: white;
 }
