@@ -1,0 +1,71 @@
+.card {
+    width: 300px;
+    height: 588px;
+
+
+    margin: 10px;
+    display: flex;
+
+
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    position: relative;
+}
+
+.text > h3 {
+    white-space: normal
+}
+
+.text {
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 70px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 10px;
+    overflow: hidden;
+
+
+}
+
+
+.badge {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px 0 0 0;
+    flex-wrap: wrap;
+    position: absolute;
+    top: -1%;
+    left: 8px;
+
+}
+
+.poster {
+    overflow: hidden;
+}
+
+.errorPoster {
+    background: #fd8383;
+    height: 500px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.light{
+    background: #3d3d3d;
+    color: white;
+}
+.dark{
+    background: #bfeeea;
+    color: black;
+}

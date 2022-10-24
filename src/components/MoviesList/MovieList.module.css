@@ -1,0 +1,30 @@
+.cardWrap{
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: center;
+    min-height: 100vh;
+}
+.listWrap{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.errorPoster{
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.state{
+    padding: 20px;
+}
+
+.light{
+    color: black;
+}
+.dark{
+    color: white;
+}

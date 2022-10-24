@@ -1,0 +1,9 @@
+.all{
+    min-height: 100vh;
+}
+.dark {
+    background: #282c34;
+}
+.light{
+    background: #e0dede;
+}

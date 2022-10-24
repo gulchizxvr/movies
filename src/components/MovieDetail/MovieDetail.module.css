@@ -1,0 +1,78 @@
+.wrap {
+    margin: 20px 10px 0;
+    display: flex;
+    position: relative;
+}
+
+.poster {
+    margin: 10px;
+}
+
+.description {
+    margin: 10px 20px 10px 10px;
+    width: 100%;
+}
+
+
+.description > h1 {
+    text-align: center;
+    margin: 15px;
+}
+
+.overview {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 20px;
+}
+.rating{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.info{
+    margin: 10px 0;
+}
+
+.logoCompanies {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.logo {
+    margin: 10px;
+}
+
+.logo > img{
+  max-height: 100px;
+    max-width: 200px;
+
+}
+
+.productBy{
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 20px;
+}
+.text{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.badges{
+    display: flex;
+}
+
+
+.dark{
+    color:white
+}
+.light{
+    color:black
+}

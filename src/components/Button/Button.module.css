@@ -1,0 +1,17 @@
+.oneButton{
+    margin: 10px 10px;
+}
+.oneButton > button {
+    border-radius: 20px;
+    border: none;
+
+    padding: 10px 20px;
+}
+.light{
+    background: #ff7300;
+    color: white;
+}
+.dark{
+    background: #b1f5f1 ;
+    color: black;
+}

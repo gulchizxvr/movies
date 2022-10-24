@@ -1,0 +1,10 @@
+.switcher {
+    position: relative;
+    right: 300px;
+}
+.dark {
+    color:white;
+}
+.light{
+    color:black;
+}

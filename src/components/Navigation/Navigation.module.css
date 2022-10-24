@@ -1,0 +1,27 @@
+
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 40px;
+    width: 100%;
+    left: 500px
+}
+
+.nextButton {
+    cursor: pointer;
+    margin-left: 5px;
+}
+.prevButton {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+
+.dark{
+    color:white;
+}
+.light{
+    color:black
+}
+
