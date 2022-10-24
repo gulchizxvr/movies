@@ -4,8 +4,8 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-
     position: relative;
+
 }
 
 .head {
@@ -24,14 +24,11 @@
 
     width: 400px;
     font-size: 15px;
-
     border-radius: 10px;
     box-sizing: border-box;
     border: none;
-
     padding: 5px 15px;
     margin: 0 5px;
-
 }
 
 .inputLine > input[type=text]:focus {

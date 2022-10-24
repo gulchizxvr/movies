@@ -21,19 +21,20 @@ height: 588px;
 
 .text {
     text-align: center;
-    /*background: coral;*/
     padding: 10px;
     box-sizing: border-box;
     width: 300px;
     height: 70px;
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items: flex-start;
     justify-content: center;
     margin-bottom: 10px;
+    overflow:hidden;
 
 
 
 }
+
 
 .badge {
     display: flex;

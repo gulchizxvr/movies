@@ -7,11 +7,14 @@
     justify-content: center;
     align-items: center;
 }
-.buttonAll > button {
+.buttonsAllDark > button {
     border: none;
     border-radius: 20px;
     background: #282c34;
     padding: 8px;
     font-size: 30px;
-    color: white;
+    color:white;
+}
+.orange > button {
+    color:white;
 }
