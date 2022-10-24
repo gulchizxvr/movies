@@ -12,7 +12,6 @@ function App() {
         <Route path={'/'} element={<MainLayout/>}>
             <Route index element={<MoviesPage/>}/>
             <Route path={'/:id'} element={<MovieDetailsPage/>}/>
-
         </Route>
     </Routes>
   );

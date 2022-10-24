@@ -13,7 +13,7 @@ const MovieDetail = () => {
 
     const {id} = useParams();
     const dispatch = useDispatch();
-    const {theme}=useSelector(state => state.themeReducer)
+    const {theme} = useSelector(state => state.themeReducer)
 
     useEffect(() => {
         dispatch(movieActions.getCurrentMovie({id}))
@@ -36,11 +36,11 @@ const MovieDetail = () => {
     } = movie
 
     return (
-        <div className={`${css.wrap} ${theme==="light" ? css.light : css.dark}`}>
+        <div className={`${css.wrap} ${theme === "light" ? css.light : css.dark}`}>
             <div className={css.poster}>
                 <img src={"https://image.tmdb.org/t/p/w400" + poster_path}/>
                 <div className={css.rating}>
-                    {vote_average &&<Rating value={vote_average} precision={0.1} max={10} readOnly/>}
+                    {vote_average && <Rating value={vote_average} precision={0.1} max={10} readOnly/>}
                     <h5>Rate: {vote_average}</h5>
                 </div>
 
@@ -54,12 +54,12 @@ const MovieDetail = () => {
 
                     <div className={css.badges}>
                         {genres?.map(genre =>
-                        theme === 'light' ?
-                            <div key={genre.id}><CBadge color="warning" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge>
+                            <div key={genre.id}>
+                                <CBadge color={theme === "light" ? "warning" : "danger"} shape="rounded-pill" style={{margin: "3px"}}>
+                                    <span>{genre.name}</span>
+                                </CBadge>
                             </div>
-                            :
-                            < div key={genre.id}>< CBadge color="danger" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge></div>
-                    )}
+                        )}
                     </div>
 
                     <h5 style={{marginTop: '8px'}}>Original title: {original_title}</h5>
