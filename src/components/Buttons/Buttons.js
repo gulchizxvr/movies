@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSearchParams} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 import css from "./Buttons.module.css"
 import {Button} from "../Button/Button";
-
 
 
 const Buttons = () => {
@@ -19,13 +18,23 @@ const Buttons = () => {
         setQuery(query)
     }
 
+
     const {genres} = useSelector(state => state.genreReducer)
 
     return (
-        <div className={css.buttons}>
-            {genres.map((genre) => <Button genre={genre} setGenre={setGenre}/>)}
-            <button onClick={() => setGenre(0)}>all</button>
-        </div>
+        query.get("genre") ?
+            <div className={css.buttonAll}>
+                <button onClick={() => setGenre(0)}>Go to all genres</button>
+            </div>
+
+            :
+
+            <div>
+                <h2 style={{color: "white"}}>You can choose</h2>
+                <div className={css.buttons}>
+                    {genres.map((genre) => <Button genre={genre} setGenre={setGenre} key={genre.id}/>)}
+                </div>
+            </div>
     );
 };
 

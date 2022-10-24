@@ -3,10 +3,16 @@ import React, {useEffect, useState} from 'react';
 
 import css from "./Header.module.css"
 import {Buttons} from "../Buttons/Buttons";
+
 import ClearIcon from '@mui/icons-material/Clear';
+
+
+import BackspaceIcon from '@mui/icons-material/Backspace';
+
 import {Switcher} from "../Switcher/Switcher";
 import {useDispatch, useSelector} from "react-redux";
-import {genreActions} from "../../redux";
+import {genreActions, profileActions} from "../../redux";
+import {Profile} from "../Profile/Profile";
 
 
 const Header = () => {
@@ -20,8 +26,11 @@ const Header = () => {
     const {currentMovie} = useSelector(state => state.movieReducer);
 
 
+
+
     useEffect(() => {
         dispatch(genreActions.getGenres())
+        dispatch(profileActions.getInfoProfile())
     }, [dispatch])
 
 
@@ -52,19 +61,24 @@ const Header = () => {
 
     }
 
-
     return (
 
         <div className={css.header}>
-            <div className={css.inputLine}>
-                <input type="text" placeholder={"Введіть слово для пошуку"} onChange={changeValue}
-                       id={'searchValue'}/>
-                {searching &&
-                    <button className={css.clear} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
-                <button onClick={submit} disabled={!searching}>search</button>
+
+            <div className={css.head}>
 
                 <Switcher/>
 
+                <div className={css.inputLine}>
+                    <input type="text" placeholder={"Введіть слово для пошуку"} onChange={changeValue}
+                           id={'searchValue'}/>
+
+                    {searching &&
+                        <button className={css.clearButton} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
+                    <button onClick={submit} disabled={!searching}>search</button>
+                </div>
+
+                <Profile/>
 
             </div>
 
@@ -73,6 +87,7 @@ const Header = () => {
                     (query.get("search") ? <button onClick={() => deleteSearch()}>{query.get("search")}</button> :
                         <Buttons/>)}
             </div>
+
         </div>
 
     );

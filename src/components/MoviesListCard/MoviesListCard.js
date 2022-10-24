@@ -41,10 +41,10 @@ const MoviesListCard = ({movie}) => {
             </div>
 
             <div className={css.badge}>
-                {genreOfMovie.map(genre => <Badge genre={genre}/>)}
+                {genreOfMovie.map((genre,index) => <Badge genre={genre} key={index}/>)}
             </div>
             <div className={css.text}><h4>{title}</h4></div>
-            <Rating value={vote_average} precision={0.05} max={10} readOnly/>
+            <Rating value={vote_average} precision={0.1} max={10} readOnly/>
             {vote_average}
 
         </div>

@@ -4,7 +4,8 @@ const urls = {
     getMovies:"/discover/movie",
     getGenre:"/genre/movie/list",
     getMovie:"/movie",
-    findMovies:"/search/movie"
+    findMovies:"/search/movie",
+    getInfo:"/account"
 }
 
 
