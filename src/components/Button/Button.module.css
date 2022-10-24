@@ -1,7 +1,7 @@
-.onebutton{
+.oneButton{
     margin: 10px 10px;
 }
-.onebutton > button {
+.oneButton > button {
     border-radius: 20px;
     border: none;
     background: #b1f5f1;
