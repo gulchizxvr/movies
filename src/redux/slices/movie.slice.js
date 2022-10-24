@@ -4,6 +4,7 @@ import {movieService} from "../../services";
 
 const initialState = {
     movies: [],
+    movie: {},
     currentMovie: false,
     error: false,
     loading: false
@@ -14,6 +15,17 @@ const getMoviesData = createAsyncThunk(
     async ({page}, {rejectedWithValue, dispatch, getState}) => {
         try {
             const {data} = await movieService.getMovies(page)
+            return data
+        } catch (e) {
+            return rejectedWithValue(e.response.data)
+        }
+    }
+)
+const getCurrentMovie = createAsyncThunk(
+    'movieSlice/getCurrentMovie',
+    async ({id}, {rejectedWithValue, dispatch, getState}) => {
+        try {
+            const {data} = await movieService.getMovie(id)
             return data
         } catch (e) {
             return rejectedWithValue(e.response.data)
@@ -90,6 +102,17 @@ const movieSlice = createSlice({
             .addCase(getMoviesSearch.rejected, (state, action) => {
                 state.error = action.payload
             })
+
+            .addCase(getCurrentMovie.rejected, (state, action)=>{
+                state.error = action.payload
+            })
+            .addCase(getCurrentMovie.pending, (state, action) => {
+                state.loading = true
+            })
+            .addCase(getCurrentMovie.fulfilled, (state, action) => {
+                state.loading = false
+                state.movie = action.payload
+            })
 });
 
 const {reducer: movieReducer, actions:{selectMovie}} = movieSlice
@@ -98,7 +121,8 @@ const movieActions = {
     getMoviesData,
     getMoviesWithGenre,
     getMoviesSearch,
-    selectMovie
+    selectMovie,
+    getCurrentMovie
 }
 
 export {

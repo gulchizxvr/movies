@@ -17,3 +17,12 @@
     align-items: center;
 
 }
+
+.loading{
+    padding: 20px;
+    color:white
+}
+.error{
+    padding: 20px;
+    color: white
+}

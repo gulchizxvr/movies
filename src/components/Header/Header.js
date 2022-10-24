@@ -16,6 +16,8 @@ import {Profile} from "../Profile/Profile";
 
 const Header = () => {
 
+    const {theme}=useSelector(state => state.themeReducer)
+
     const [query, setQuery] = useSearchParams();
 
     const [searching, setSearching] = useState("");

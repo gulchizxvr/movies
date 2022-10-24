@@ -48,8 +48,8 @@ const MoviesList = () => {
     return (
         <div className={css.listWrap}>
 
-            {loading ? <h2>Loading</h2> : null}
-            {error ? <h2>Error</h2> : null}
+            {loading ? <div className={css.loading}><h2>Loading....</h2></div> : null}
+            {error ? <div className={css.error}><h2>Error</h2></div> : null}
 
             <div className={css.cardWrap}>
                 {results ? (results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)) : null}
