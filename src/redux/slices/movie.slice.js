@@ -7,7 +7,7 @@ const initialState = {
     movie: {},
     currentMovie: false,
     error: false,
-    loading: true
+    loading: false
 }
 
 const getMoviesData = createAsyncThunk(
