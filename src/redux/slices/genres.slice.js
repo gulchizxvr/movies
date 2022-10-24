@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {movieService} from "../../services";
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
 
 const getGenres = createAsyncThunk(
     'movieSlice/getGenres',
-    async (_, {rejectedWithValue, getState}) => {
+    async (_, {rejectedWithValue}) => {
 
         try {
             const {data} = await movieService.getGenre()

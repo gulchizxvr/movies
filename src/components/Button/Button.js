@@ -1,7 +1,7 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 
 import css from "./Button.module.css"
-import {useSelector} from "react-redux";
 
 const Button = ({genre,setGenre}) => {
 

@@ -1,8 +1,8 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 
 import {CBadge} from "@coreui/react";
 import css from "./Badge.module.css"
-import {useSelector} from "react-redux";
 
 const Badge = ({genre}) => {
 

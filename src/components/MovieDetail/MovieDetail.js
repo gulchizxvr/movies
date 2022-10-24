@@ -1,11 +1,9 @@
 import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
-
-
 import {useDispatch, useSelector} from "react-redux";
+
 import {movieActions} from "../../redux";
 import {CBadge} from "@coreui/react";
-
 import css from "./MovieDetail.module.css"
 import {Rating} from "@mui/material";
 
