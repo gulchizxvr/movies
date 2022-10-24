@@ -50,7 +50,6 @@ const MoviesListCard = ({movie}) => {
             <div className={css.text}><h4>{title}</h4></div>
             {vote_average && <Rating value={vote_average} precision={0.1} max={10} readOnly/>}
             {vote_average}
-
         </div>
     );
 }
