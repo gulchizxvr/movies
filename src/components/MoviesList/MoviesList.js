@@ -32,22 +32,24 @@ const MoviesList = () => {
             dispatch(movieActions.getMoviesData({page}))
         }
 
-    }, [page, value, genre])
-
+    }, [page, value, genre,dispatch])
 
     const {results} = movies
+
+
     if (!loading && results?.length<=0) {
-        return <div>
-            <h1>its all</h1>
+
+        return <div className={css.errorPoster}>
+            <h1>No movies matching your search</h1>
         </div>
     }
 
 
     return (
-        <div style={{display:"flex",alignItems:"center",flexDirection:"column"}}>
+        <div className={css.listWrap}>
 
-            {loading ? <h2>Завантаження</h2> : null}
-            {error ? <h2>Сталася помилка</h2> : null}
+            {loading ? <h2>Loading</h2> : null}
+            {error ? <h2>Error</h2> : null}
 
             <div className={css.cardWrap}>
                 {results ? (results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)) : null}

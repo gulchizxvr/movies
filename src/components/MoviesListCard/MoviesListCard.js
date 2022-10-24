@@ -37,7 +37,10 @@ const MoviesListCard = ({movie}) => {
 
 
             <div className={css.poster}>
-                <img src={"https://image.tmdb.org/t/p/w300" + poster_path} alt={"error with image"}/>
+                {poster_path ? <img src={"https://image.tmdb.org/t/p/w300" + poster_path}/> : <div className={css.errorPoster}>
+                    <h2>Error image</h2></div> }
+
+
             </div>
 
             <div className={css.badge}>

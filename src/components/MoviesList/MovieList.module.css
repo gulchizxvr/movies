@@ -4,3 +4,16 @@
    justify-content: center;
     min-height: 85vh;
 }
+.listWrap{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.errorPoster{
+    display: flex;
+    height: 78.5vh;
+    justify-content: center;
+    align-items: center;
+
+}

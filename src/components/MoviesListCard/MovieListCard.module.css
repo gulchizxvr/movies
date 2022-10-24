@@ -50,3 +50,11 @@ height: 588px;
 .poster {
     overflow: hidden;
 }
+.errorPoster{
+    background: #fd8383;
+    height: 500px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

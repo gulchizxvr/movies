@@ -7,7 +7,6 @@ import {Buttons} from "../Buttons/Buttons";
 import ClearIcon from '@mui/icons-material/Clear';
 
 
-import BackspaceIcon from '@mui/icons-material/Backspace';
 
 import {Switcher} from "../Switcher/Switcher";
 import {useDispatch, useSelector} from "react-redux";
@@ -24,8 +23,6 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const {currentMovie} = useSelector(state => state.movieReducer);
-
-
 
 
     useEffect(() => {
@@ -72,9 +69,10 @@ const Header = () => {
                 <div className={css.inputLine}>
                     <input type="text" placeholder={"Введіть слово для пошуку"} onChange={changeValue}
                            id={'searchValue'}/>
-
                     {searching &&
-                        <button className={css.clearButton} onClick={() => clear()}><ClearIcon fontSize="small"/></button>}
+                        <button className={css.clearButton} onClick={() => clear()}><ClearIcon fontSize="small"/>
+                        </button>}
+
                     <button onClick={submit} disabled={!searching}>search</button>
                 </div>
 
@@ -84,7 +82,14 @@ const Header = () => {
 
             <div className={css.buttonsGenre}>
                 {currentMovie &&
-                    (query.get("search") ? <button onClick={() => deleteSearch()}>{query.get("search")}</button> :
+                    (query.get("search") ?
+
+                        <div className={css.removeSearch} onClick={() => deleteSearch()}>
+                            <h3>Delete "{query.get("search")}"</h3>
+                        </div>
+
+                        :
+
                         <Buttons/>)}
             </div>
 
