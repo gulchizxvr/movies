@@ -10,17 +10,17 @@ import {blue, green} from '@mui/material/colors';
 
 
 const Navigation = () => {
-    const [query,setQuery] = useSearchParams({page:'1'})
+    const [query, setQuery] = useSearchParams({page: '1'})
 
     let {movies} = useSelector(state => state.movieReducer);
-    const totalPages = movies?.total_pages
+    const {theme} = useSelector(state => state.themeReducer);
 
-    const {theme}=useSelector(state => state.themeReducer)
+    const totalPages = movies?.total_pages
 
 
     const goPrevious = () => {
-        const previous = query.get('page')-1
-        query.set('page',previous)
+        const previous = query.get('page') - 1
+        query.set('page', previous)
         setQuery(query)
         window.scrollTo({
             top: 0,
@@ -29,27 +29,32 @@ const Navigation = () => {
         })
     }
     const goNext = () => {
-        const next = +query.get('page')+1
-        query.set('page',next)
+        const next = +query.get('page') + 1
+        query.set('page', next)
         setQuery(query)
         window.scrollTo({
-            top:0,
-            left:0,
-            behavior:"smooth"
+            top: 0,
+            left: 0,
+            behavior: "smooth"
         })
     }
 
     return (
         <div className={css.navigation}>
 
-            {+query.get("page")>1 &&
-                <div className={css.prevButton}><ArrowBackIosNewIcon fontSize={"large"} sx={{color: theme === 'light' ? blue[500] : green[500]}} onClick={goPrevious}>Previous
+            {+query.get("page") > 1 &&
+                <div className={css.prevButton}><ArrowBackIosNewIcon fontSize={"large"}
+                                                                     sx={{color: theme === 'light' ? blue[500] : green[500]}}
+                                                                     onClick={goPrevious}>Previous
                     page</ArrowBackIosNewIcon></div>}
 
-            {totalPages>0 && <h3 className={`${theme === 'light' ? css.light : css.dark}`}> Page: {query.get('page')} of {totalPages}</h3>}
+            {totalPages > 0 &&
+                <h3 className={`${theme === 'light' ? css.light : css.dark}`}> Page: {query.get('page')} of {totalPages}</h3>}
 
-            {+query.get("page")<totalPages &&
-                <div className={css.nextButton}><ArrowForwardIosIcon fontSize={"large"} sx={{color: theme === 'light' ? blue[500] : green[500]}} onClick={goNext}>Next
+            {+query.get("page") < totalPages &&
+                <div className={css.nextButton}><ArrowForwardIosIcon fontSize={"large"}
+                                                                     sx={{color: theme === 'light' ? blue[500] : green[500]}}
+                                                                     onClick={goNext}>Next
                     page</ArrowForwardIosIcon></div>}
         </div>
     );

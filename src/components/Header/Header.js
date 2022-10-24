@@ -1,15 +1,12 @@
 import {useSearchParams} from "react-router-dom";
 import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 
 import css from "./Header.module.css"
-import {Buttons} from "../Buttons/Buttons";
-
 import ClearIcon from '@mui/icons-material/Clear';
 
-
-
+import {Buttons} from "../Buttons/Buttons";
 import {Switcher} from "../Switcher/Switcher";
-import {useDispatch, useSelector} from "react-redux";
 import {genreActions, profileActions} from "../../redux";
 import {Profile} from "../Profile/Profile";
 
@@ -17,14 +14,13 @@ import {Profile} from "../Profile/Profile";
 const Header = () => {
 
     const {theme}=useSelector(state => state.themeReducer)
+    const {currentMovie} = useSelector(state => state.movieReducer);
 
     const [query, setQuery] = useSearchParams();
 
     const [searching, setSearching] = useState("");
 
     const dispatch = useDispatch();
-
-    const {currentMovie} = useSelector(state => state.movieReducer);
 
 
     useEffect(() => {

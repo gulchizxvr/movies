@@ -4,9 +4,10 @@ import {useSelector} from "react-redux";
 import css from "./Profile.module.css";
 
 const Profile = () => {
-    const {theme}=useSelector(state => state.themeReducer)
 
+    const {theme}=useSelector(state => state.themeReducer)
     const {info} = useSelector(state => state.profileReducer);
+
     return (
             <div className={`${css.profile} ${theme==="light" ? css.light : css.dark}`}>
                 <h4>Welcome, {info?.username}!</h4>

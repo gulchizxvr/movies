@@ -10,17 +10,15 @@ import {Rating} from "@mui/material";
 const MovieDetail = () => {
 
     const {id} = useParams();
+
     const dispatch = useDispatch();
+
     const {theme} = useSelector(state => state.themeReducer)
+    const {movie, loading} = useSelector(state => state.movieReducer);
 
     useEffect(() => {
         dispatch(movieActions.getCurrentMovie({id}))
     }, [id, dispatch])
-
-    const {movie, loading} = useSelector(state => state.movieReducer);
-
-
-    console.log(loading);
 
     const {
         poster_path,

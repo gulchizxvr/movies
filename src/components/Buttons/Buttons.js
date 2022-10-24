@@ -9,7 +9,9 @@ import {Button} from "../Button/Button";
 
 const Buttons = () => {
     let [query, setQuery] = useSearchParams();
+
     const {theme}=useSelector(state => state.themeReducer)
+    const {genres} = useSelector(state => state.genreReducer)
 
     const setGenre = (id) => {
         id > 0 ? query.set('genre', id) : query.delete('genre')
@@ -18,12 +20,7 @@ const Buttons = () => {
         setQuery(query)
     }
 
-
-    const {genres} = useSelector(state => state.genreReducer)
-
     if (query.get("genre")) {
-
-
 
         return (<div className={css.buttonsAll}>
             <button className={`${theme === "light" ?  css.light : css.dark}`} onClick={() => setGenre(0)}>Go to all genres</button>
