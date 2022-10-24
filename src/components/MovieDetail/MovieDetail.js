@@ -40,7 +40,7 @@ const MovieDetail = () => {
             <div className={css.poster}>
                 <img src={"https://image.tmdb.org/t/p/w400" + poster_path}/>
                 <div className={css.rating}>
-                    <Rating value={vote_average} precision={0.1} max={10} readOnly/>
+                    {vote_average &&<Rating value={vote_average} precision={0.1} max={10} readOnly/>}
                     <h5>Rate: {vote_average}</h5>
                 </div>
 
@@ -55,10 +55,10 @@ const MovieDetail = () => {
                     <div className={css.badges}>
                         {genres?.map(genre =>
                         theme === 'light' ?
-                            <div><CBadge color="warning" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge>
+                            <div key={genre.id}><CBadge color="warning" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge>
                             </div>
                             :
-                            < div>< CBadge color="danger" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge></div>
+                            < div key={genre.id}>< CBadge color="danger" shape="rounded-pill" style={{margin: "3px"}}><span>{genre.name}</span></CBadge></div>
                     )}
                     </div>
 
@@ -95,7 +95,6 @@ const MovieDetail = () => {
                                     {company.logo_path ?
                                         <img src={"https://image.tmdb.org/t/p/w300" + company.logo_path}/> :
                                         <h4>| {company.name} |</h4>}
-
                                 </div>
                             )}
 

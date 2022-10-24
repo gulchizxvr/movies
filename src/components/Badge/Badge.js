@@ -9,19 +9,11 @@ const Badge = ({genre}) => {
     const {theme}=useSelector(state => state.themeReducer)
 
     return (
-        theme === 'light' ?
             <div className={css.badges}>
-                <CBadge color="dark" shape="rounded-pill">
+                <CBadge color={theme === 'light' ? 'dark' : 'danger'} shape="rounded-pill">
                     <span>{genre}</span>
                 </CBadge>
             </div>
-            :
-            <div className={css.badges}>
-                <CBadge color="danger" shape="rounded-pill">
-                    <span>{genre}</span>
-                </CBadge>
-            </div>
-
 );
 };
 

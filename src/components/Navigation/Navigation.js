@@ -6,7 +6,7 @@ import css from "./Navigation.module.css"
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import {blue} from '@mui/material/colors';
+import {blue, green} from '@mui/material/colors';
 
 
 const Navigation = () => {
@@ -41,15 +41,15 @@ const Navigation = () => {
 
     return (
         <div className={css.navigation}>
-            
+
             {+query.get("page")>1 &&
-                <div className={css.prevButton}><ArrowBackIosNewIcon fontSize={"large"} sx={{color: blue[500]}} onClick={goPrevious}>Previous
+                <div className={css.prevButton}><ArrowBackIosNewIcon fontSize={"large"} sx={{color: theme === 'light' ? blue[500] : green[500]}} onClick={goPrevious}>Previous
                     page</ArrowBackIosNewIcon></div>}
 
             {totalPages>0 && <h3 className={`${theme === 'light' ? css.light : css.dark}`}> Page: {query.get('page')} of {totalPages}</h3>}
 
             {+query.get("page")<totalPages &&
-                <div className={css.nextButton}><ArrowForwardIosIcon fontSize={"large"} sx={{color: blue[500]}} onClick={goNext}>Next
+                <div className={css.nextButton}><ArrowForwardIosIcon fontSize={"large"} sx={{color: theme === 'light' ? blue[500] : green[500]}} onClick={goNext}>Next
                     page</ArrowForwardIosIcon></div>}
         </div>
     );
