@@ -76,3 +76,12 @@
 .light{
     color:black
 }
+
+.errorPoster{
+    width: 300px;
+    height: 400px;
+    background: #fb8282;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

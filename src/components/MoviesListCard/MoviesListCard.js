@@ -17,6 +17,7 @@ const MoviesListCard = ({movie}) => {
 
     const {genres} = useSelector(state => state.genreReducer)
 
+
     const genreOfMovie = []
 
     const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const MoviesListCard = ({movie}) => {
 
 
             <div className={css.poster}>
-                {poster_path ? <img src={"https://image.tmdb.org/t/p/w300" + poster_path}/> :
+                {(poster_path) ? <img src={"https://image.tmdb.org/t/p/w300" + poster_path} alt={poster_path}/>  :
                     <div className={css.errorPoster}>
                         <h2>Error image</h2></div>}
             </div>

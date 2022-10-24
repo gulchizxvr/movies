@@ -19,7 +19,10 @@ const MovieDetail = () => {
         dispatch(movieActions.getCurrentMovie({id}))
     }, [id, dispatch])
 
-    const {movie} = useSelector(state => state.movieReducer);
+    const {movie, loading} = useSelector(state => state.movieReducer);
+
+
+    console.log(loading);
 
     const {
         poster_path,
@@ -38,7 +41,14 @@ const MovieDetail = () => {
     return (
         <div className={`${css.wrap} ${theme === "light" ? css.light : css.dark}`}>
             <div className={css.poster}>
-                <img src={"https://image.tmdb.org/t/p/w400" + poster_path}/>
+
+                {poster_path && <img src={"https://image.tmdb.org/t/p/w400" + poster_path} alt={title}/>}
+
+                {(!loading && !poster_path) &&
+                    <div className={css.errorPoster}>
+                        <h2>Error image</h2>
+                    </div>}
+
                 <div className={css.rating}>
                     {vote_average && <Rating value={vote_average} precision={0.1} max={10} readOnly/>}
                     <h5>Rate: {vote_average}</h5>
@@ -55,7 +65,8 @@ const MovieDetail = () => {
                     <div className={css.badges}>
                         {genres?.map(genre =>
                             <div key={genre.id}>
-                                <CBadge color={theme === "light" ? "warning" : "danger"} shape="rounded-pill" style={{margin: "3px"}}>
+                                <CBadge color={theme === "light" ? "warning" : "danger"} shape="rounded-pill"
+                                        style={{margin: "3px"}}>
                                     <span>{genre.name}</span>
                                 </CBadge>
                             </div>
@@ -91,9 +102,10 @@ const MovieDetail = () => {
                         <div className={css.logoCompanies}>
 
                             {production_companies?.map(company =>
-                                <div className={css.logo}>
+                                <div key={company.id} className={css.logo}>
                                     {company.logo_path ?
-                                        <img src={"https://image.tmdb.org/t/p/w300" + company.logo_path}/> :
+                                        <img src={"https://image.tmdb.org/t/p/w300" + company.logo_path}
+                                             alt={company.name}/> :
                                         <h4>| {company.name} |</h4>}
                                 </div>
                             )}
